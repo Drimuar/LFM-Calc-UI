@@ -1,19 +1,33 @@
 let main = document.querySelector(".main-frame");
 let buttons = main.querySelectorAll("button");
 let output = document.querySelector(".output");
+
 let operation;
-let length;
+
+const SMALLFONT = "32px";
+const MEDIUMFONT = "64px";
+const BIGFONT = "96px";
+
 const operations = {
 	"÷": "/",
 	"×": "*",
 	"–": "-",
 	"+": "+",
 };
+
 const methods = {
-	"+": (a, b) => a + b,
-	"-": (a, b) => a - b,
-	"/": (a, b) => a / b,
-	"*": (a, b) => a * b,
+	"+": function (a, b) {
+		return parseInt(a) + parseInt(b);
+	},
+	"-": function (a, b) {
+		return parseInt(a) - parseInt(b);
+	},
+	"*": function (a, b) {
+		return parseInt(a) * parseInt(b);
+	},
+	"/": function (a, b) {
+		return parseInt(a) / parseInt(b);
+	},
 }
 
 
@@ -42,15 +56,15 @@ for (let button of buttons) {
 				}
 				break;
 		}
-		length = output.value;
-		if (length.length > 10) {
-			output.style.fontSize = "32px";
+		let length = output.value.length;
+		if (length > 10) {
+			output.style.fontSize = SMALLFONT;
 		}
-		else if (length.length > 6) {
-			output.style.fontSize = "64px";
+		else if (length > 6) {
+			output.style.fontSize = MEDIUMFONT;
 		}
-		else if (length.length < 7) {
-			output.style.fontSize = "96px";
+		else if (length < 7) {
+			output.style.fontSize = BIGFONT;
 		}
 	});
 }
@@ -67,6 +81,6 @@ function calc(str, operation) {
 	else if (!isFinite(str[0]) || !isFinite(str[1])) {
 		return "wrong numbers"
 	}
-	result = methods[operation](+str[0], +str[1]);
+	result = methods[operation](str[0], str[1]);
 	return result;
 }
