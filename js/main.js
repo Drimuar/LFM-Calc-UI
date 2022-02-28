@@ -1,6 +1,4 @@
-let main = document.querySelector(".main-frame");
-let buttons = main.querySelectorAll("button");
-let output = document.querySelector(".output");
+import { buttons, output } from "./view.js";
 
 let operation;
 
@@ -81,6 +79,6 @@ function calc(str, operation) {
 	else if (!isFinite(str[0]) || !isFinite(str[1])) {
 		return "wrong numbers"
 	}
-	result = methods[operation](str[0], str[1]);
+	let result = methods[operation](str[0], str[1]);
 	return result;
 }
