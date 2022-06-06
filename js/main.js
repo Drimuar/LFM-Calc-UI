@@ -15,16 +15,16 @@ const operations = {
 
 const methods = {
 	"+": function (a, b) {
-		return parseInt(a) + parseInt(b);
+		return +a + +b;
 	},
 	"-": function (a, b) {
-		return parseInt(a) - parseInt(b);
+		return +a + - +b;
 	},
 	"*": function (a, b) {
-		return parseInt(a) * parseInt(b);
+		return +a * +b;
 	},
 	"/": function (a, b) {
-		return parseInt(a) / parseInt(b);
+		return +a / +b;
 	},
 }
 
